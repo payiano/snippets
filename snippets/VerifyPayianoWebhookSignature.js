@@ -51,12 +51,12 @@ const getFlattenPayload = (payload, parent = null) =>
   }, {})
 
 /**
- * Get clean payload.
+ * Get cleaned payload.
  *
  * @param  {mixed} flatten
  * @return {object}
  */
-const getCleanPayload = (flatten) =>
+const getCleanedPayload = (flatten) =>
   Object.entries(flatten).reduce((carry, [key, value]) => {
     if (isValueNotEmpty(value)) {
       carry[key] =
@@ -102,7 +102,7 @@ const getEncodedPayload = (sorted) =>
 const getSignatureText = (payload) => {
   const flatten = getFlattenPayload(payload)
 
-  const cleaned = getCleanPayload(flatten)
+  const cleaned = getCleanedPayload(flatten)
 
   const sorted = getSortedPayload(cleaned)
 
