@@ -59,11 +59,11 @@ class VerifyPayianoWebhookEvent
     /**
      * Get flatten payload.
      *
-     * @param  mixed $payload
+     * @param  array $payload
      * @param  ?string $parent
      * @return array
      */
-    public static function getFlattenPayload($payload, ?string $parent = null): array
+    public static function getFlattenPayload(array $payload, ?string $parent = null): array
     {
         $carry = [];
 
@@ -86,11 +86,10 @@ class VerifyPayianoWebhookEvent
     /**
      * Get cleaned payload.
      *
-     * @param  mixed $flatten
-     * @param  ?string $parent
+     * @param  array $flatten
      * @return array
      */
-    public static function getCleanedPayload($flatten): array
+    public static function getCleanedPayload(array $flatten): array
     {
         $carry = [];
 
