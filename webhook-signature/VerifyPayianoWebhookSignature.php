@@ -99,7 +99,6 @@ class VerifyPayianoWebhookEvent
                 if (is_string($value)) {
                     // Remove new lines and any spaces from strings.
                     $value = preg_replace('/[\r\n\s]+/', '', $value);
-
                 } elseif (is_bool($value)) {
                     // Replace boolean values with boolean strings.
                     $value = $value ? 'true' : 'false';
@@ -123,7 +122,7 @@ class VerifyPayianoWebhookEvent
         $carry = [];
 
         foreach ($sorted as $key => $value) {
-            $carry[] = $key . '=' . $value;
+            $carry[] = "{$key}={$value}";
         }
 
         return $carry;
