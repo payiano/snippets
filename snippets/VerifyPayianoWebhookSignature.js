@@ -60,7 +60,7 @@ const getCleanedPayload = (flatten) =>
   Object.entries(flatten).reduce((carry, [key, value]) => {
     if (isValueNotEmpty(value)) {
       carry[key] =
-        typeof value === 'string' ? value.replace(/[\r\n]/g, '') : value
+        typeof value === 'string' ? value.replace(/[\r\\n]/g, '') : value
     }
 
     return carry
@@ -142,56 +142,17 @@ const isVerifiedSignature = (payload, receivedSignature, secret) => {
 }
 
 // Find the following example:
-const payload = {
-  webhook_event: {
-    id: '01j3521znn3b6wderr4vbyq18n',
-    type: 'company.created',
-    version: 'v1',
-    fired_at: '1722572118554'
-  },
-  webhook_event_attempt: {
-    id: '01j354j6nkwh3mdvhs6dsmswt8',
-    sent_at: '1722572118554'
-  },
-  details: {
-    data: {
-      company: {
-        name: 'Graply URL Shortenr',
-        avatar: null,
-        is_active: true,
-        is_approved: false,
-        employees_count: 0,
-        owners: [
-          {
-            name: 'Amgad Yassen',
-            position: 'CEO',
-            percentage: 51.5
-          },
-          {
-            name: 'Kamal Allam',
-            position: 'CEO',
-            percentage: 48.5
-          }
-        ],
-        description:
-          'A leading company providing\n solutions for converting lengthy\n URLs into short ones & simplifying online sharing!',
-        social_urls: {
-          facebook_url: 'https://facebook.com/graply',
-          linked_in_url: null
-        }
-      }
-    }
-  }
-}
+const payloadString =
+  '{"webhook_event":{"id":"01j3521znn3b6wderr4vbyq18n","type":"company.created","version":"v1","fired_at":"1722572118554"},"webhook_event_attempt":{"id":"01j354j6nkwh3mdvhs6dsmswt8","sent_at":"1722572118554"},"details":{"data":{"company":{"name":"Graply URL Shortenr","avatar":null,"is_active":true,"is_approved":false,"employees_count":0,"owners":[{"name":"Amgad Yassen","position":"CEO","percentage":51.5},{"name":"Kamal Allam","position":"CEO","percentage":48.5}],"description":"A leading company providing\\n solutions for converting lengthy\\n URLs into short ones & simplifying online sharing!","social_urls":{"facebook_url":"https://facebook.com/graply","linked_in_url":null}}}}}'
+
+const payload = JSON.parse(payloadString)
 
 const receivedSignature =
-  '90e9211ef6e629ef0cfe3ab115231f742b56f27fe703d5d19eccac8a8d19cfab'
+  'f245eeddac1e16821a60d68e3a79d7323df5fbddf62471d2ff2ef73e63a9bd35'
 
 const secret = 'OWlPF9plag9KEtYvw3EM+7UDrgXb84xjZPR2TvzJM1I='
 
-console.log('getComputedSignature', getComputedSignature(payload, secret))
-
-console.log(
-  'isVerifiedSignature',
-  isVerifiedSignature(payload, receivedSignature, secret)
-)
+console.log({
+  getComputedSignature: getComputedSignature(payload, secret),
+  isVerifiedSignature: isVerifiedSignature(payload, receivedSignature, secret)
+})
