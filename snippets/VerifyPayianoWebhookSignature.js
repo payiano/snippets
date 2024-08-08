@@ -60,7 +60,7 @@ const getCleanedPayload = (flatten) =>
   Object.entries(flatten).reduce((carry, [key, value]) => {
     if (isValueNotEmpty(value)) {
       carry[key] =
-        typeof value === 'string' ? value.replace(/[\r\\n]/g, '') : value
+        typeof value === 'string' ? value.replace(/[\r\n\s]/g, '') : value
     }
 
     return carry
@@ -82,16 +82,13 @@ const getSortedPayload = (cleaned) => {
 }
 
 /**
- * Get encoded payload.
+ * Get simplified payload.
  *
  * @param  {object} sorted
  * @return {object}
  */
-const getEncodedPayload = (sorted) =>
-  sorted.map(
-    ({ key, value }) =>
-      `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
-  )
+const getSimplifiedPayload = (sorted) =>
+  sorted.map(({ key, value }) => `${key}=${value}`)
 
 /**
  * Get signature text.
@@ -106,9 +103,9 @@ const getSignatureText = (payload) => {
 
   const sorted = getSortedPayload(cleaned)
 
-  const encoded = getEncodedPayload(sorted)
+  const simplified = getSimplifiedPayload(sorted)
 
-  return encoded.join('&')
+  return simplified.join('&')
 }
 
 /**
@@ -148,11 +145,12 @@ const payloadString =
 const payload = JSON.parse(payloadString)
 
 const receivedSignature =
-  'f245eeddac1e16821a60d68e3a79d7323df5fbddf62471d2ff2ef73e63a9bd35'
+  'a621fc745416b00bb24758440fa75a850f6f8cb3f901217a6a9854f043ff8b70'
 
 const secret = 'OWlPF9plag9KEtYvw3EM+7UDrgXb84xjZPR2TvzJM1I='
 
 console.log({
+  getSignatureText: getSignatureText(payload),
   getComputedSignature: getComputedSignature(payload, secret),
   isVerifiedSignature: isVerifiedSignature(payload, receivedSignature, secret)
 })
