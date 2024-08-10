@@ -1,4 +1,10 @@
 
+/**
+ * Learn how to verify webhook event sent by Payiano API.
+ *
+ * @author Payiano Team <info@payiano.com>
+ * @see https://docs.payiano.com/api/rest/reference/webhooks/verify-signature
+ */
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import javax.crypto.Mac;

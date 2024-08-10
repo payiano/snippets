@@ -1,6 +1,6 @@
 # VerifyPayianoWebhookSignature Example
 
-This project provides a simple Java example to verify webhook signatures using HMAC-SHA256. The example uses the Jackson library to parse JSON payloads.
+This project provides a simple Java example to verify webhook signatures using `HMAC-SHA256`. The example uses the Jackson library to parse JSON payloads.
 
 ## Prerequisites
 
@@ -55,8 +55,8 @@ java -cp .;jackson-core-2.15.2.jar;jackson-databind-2.15.2.jar;jackson-annotatio
 
 The program will output the following information to the console:
 
-- **Signature Text**: The text used to compute the HMAC signature.
-- **Computed Signature**: The HMAC-SHA256 signature computed from the payload and secret.
+- **Signature Text**: The text used to compute the `HMAC` signature.
+- **Computed Signature**: The `HMAC-SHA256` signature computed from the payload and secret.
 - **Verified Signature**: Whether the computed signature matches the received signature.
 
 If everything is set up correctly, you should see output similar to this:
