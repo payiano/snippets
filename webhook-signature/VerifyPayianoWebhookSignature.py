@@ -92,7 +92,7 @@ class VerifyPayianoWebhookSignature:
             return value is not None
 
 
-# Example usage:
+# Find the following example:
 payloadString = '{"webhook_event":{"id":"01j3521znn3b6wderr4vbyq18n","type":"company.created","version":"v1","fired_at":"1722572118554"},"webhook_event_attempt":{"id":"01j354j6nkwh3mdvhs6dsmswt8","sent_at":"1722572118554"},"details":{"data":{"company":{"name":"Graply URL Shortenr","avatar":null,"is_active":true,"is_approved":false,"employees_count":0,"owners":[{"name":"Amgad Yassen","position":"CEO","percentage":51.5},{"name":"Kamal Allam","position":"CEO","percentage":48.5}],"description":"A leading company providing\\n solutions for converting lengthy\\n URLs into short ones & simplifying online sharing!","social_urls":{"facebook_url":"https://facebook.com/graply","linked_in_url":null}}}}}'
 
 payload = json.loads(payloadString)

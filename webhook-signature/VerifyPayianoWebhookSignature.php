@@ -6,7 +6,7 @@
  * @author Payiano Team <info@payiano.com>
  * @see https://docs.payiano.com/api/rest/reference/webhooks/verify-signature
  */
-class VerifyPayianoWebhookEvent
+class VerifyPayianoWebhookSignature
 {
     /**
      * Check if signature is verified.
@@ -181,7 +181,7 @@ $receivedSignature = 'a621fc745416b00bb24758440fa75a850f6f8cb3f901217a6a9854f043
 $secret = 'OWlPF9plag9KEtYvw3EM+7UDrgXb84xjZPR2TvzJM1I=';
 
 print_r([
-    'getSignatureText' => VerifyPayianoWebhookEvent::getSignatureText($payload),
-    'getComputedSignature' => VerifyPayianoWebhookEvent::getComputedSignature($payload, $secret),
-    'isVerifiedSignature' => (int) VerifyPayianoWebhookEvent::isVerifiedSignature($payload, $receivedSignature, $secret),
+    'getSignatureText' => VerifyPayianoWebhookSignature::getSignatureText($payload),
+    'getComputedSignature' => VerifyPayianoWebhookSignature::getComputedSignature($payload, $secret),
+    'isVerifiedSignature' => (int) VerifyPayianoWebhookSignature::isVerifiedSignature($payload, $receivedSignature, $secret),
 ]);
