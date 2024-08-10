@@ -1,5 +1,5 @@
 
-# Verify Payiano Webhook Signature
+# Verify Payiano Webhook Signature With NodeJs
 
 This project provides a JavaScript example for verifying webhook signatures sent by the Payiano API using `HMAC-SHA256`.
 

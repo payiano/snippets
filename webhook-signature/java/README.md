@@ -1,4 +1,4 @@
-# VerifyPayianoWebhookSignature Example
+# Verify Payiano Webhook Signature With Java
 
 This project provides a simple Java example to verify webhook signatures using `HMAC-SHA256`. The example uses the Jackson library to parse JSON payloads.
 
