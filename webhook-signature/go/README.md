@@ -1,4 +1,4 @@
-# Verify Payiano Webhook Signature With GO
+# Verify Payiano Webhook Signature With Go
 
 This project provides a Go implementation for verifying webhook signatures sent by the Payiano API using HMAC-SHA256.
 
